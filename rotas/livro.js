@@ -3,7 +3,12 @@ const { Router } = require('express');
 const router = Router();
 
 router.get('/', (req, res) => {
-    res.send("Welcome to books")
+    try {
+        res.send("Welcome to books")
+    } catch (error) {
+        res.status(500)
+        res.send(error.message)
+    }
 })
 
 router.post('/', (req, res) => {
