@@ -1,4 +1,4 @@
-const { getTodosLivros, getLivroPorId, insereLivro } = require('../servicos/livro');
+const { getTodosLivros, getLivroPorId, insereLivro, modificaLivro } = require('../servicos/livro');
 
 function getLivros(req, res) {
     try {
@@ -33,8 +33,21 @@ function postLivro(req, res) {
     }
 }
 
+function patchLivro(req, res) {
+    try {
+        const id = req.params.id;
+        const body = req.body;
+        modificaLivro(body, id)
+        res.send("item modificado com sucesso")
+    }catch (error) {
+        res.status(500)
+        res.send(error.message)
+    }
+}
+
 module.exports = {
     getLivros,
     getLivro,
-    postLivro
+    postLivro, 
+    patchLivro
 }
