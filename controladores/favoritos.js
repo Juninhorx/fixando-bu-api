@@ -11,7 +11,7 @@ function getFavoritos(req, res) {
 
 function postFavorito(req, res) {
     try {
-        const id = req.body.id
+        const id = req.params.id
 
         insereFavorito(id)
         res.status(201)
